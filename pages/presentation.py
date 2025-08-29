@@ -1,4 +1,5 @@
 import streamlit as st
+import pandas as pd
 
 st.set_page_config(page_title="House Price EDA — Kaggle", layout="wide")
 
@@ -141,3 +142,25 @@ st.write("""
 - Логарифмирование таргета и стратифицированное разбиение помогли стабилизировать обучение
 - Отбор признаков позволил уменьшить размер пайплайна без потери качества
 """)
+
+# Res Models
+st.markdown('---')
+st.header("Результаты моделей")
+
+st.write(
+    "Для сравнения качества разных моделей на валидационном наборе были рассчитаны метрики RMSLE, R2, RMSE и MAE. "
+    "Ниже представлены результаты по каждой модели."
+)
+
+results = [
+    {"Model": "CatBoost", "RMSLE": 0.1165, "R2": 0.9026, "RMSE": 24988.41, "MAE": 14724.46},
+    {"Model": "Ridge", "RMSLE": 0.1315, "R2": 0.8913, "RMSE": 24988.41, "MAE": 14724.46},
+    {"Model": "RandomForest", "RMSLE": 0.1265, "R2": 0.8987, "RMSE": 25485.52, "MAE": 15768.62},
+    {"Model": "Lasso", "RMSLE": 0.1370, "R2": 0.8783, "RMSE": 25485.52, "MAE": 15768.62},
+    {"Model": "GradientBoosting", "RMSLE": 0.1216, "R2": 0.8953, "RMSE": 25904.35, "MAE": 15536.20},
+    {"Model": "HistGradientBoosting", "RMSLE": 0.1213, "R2": 0.9121, "RMSE": 23738.60, "MAE": 14743.04},
+    {"Model": "KNN", "RMSLE": 0.1992, "R2": 0.7543, "RMSE": 39687.36, "MAE": 24477.19},
+]
+
+df_results = pd.DataFrame(results).set_index("Model")
+st.dataframe(df_results.style.format("{:.4f}"))
