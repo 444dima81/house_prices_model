@@ -6,3 +6,4 @@
 * Ярослав Пахомов
 
   
+Сайт проекта https://housepricesmodel-8t3ngdjkczdtrqfbouiffw.streamlit.app/
