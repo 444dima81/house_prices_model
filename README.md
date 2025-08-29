@@ -4,7 +4,8 @@
 * Любовь Стрижова
 * Кошелев Дмитрий
 * Ярослав Пахомов
-
+  
+### [Сайт с моделью](https://housepricesmodel-8t3ngdjkczdtrqfbouiffw.streamlit.app/)
 ---
 
 ## ℹ️ О проекте
