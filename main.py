@@ -16,13 +16,19 @@ if uploaded_file is not None:
     st.subheader("Предварительный просмотр данных")
     st.dataframe(df.head())
 
-    # Проверка наличия нужных признаков
-    required_features = pipe_red.named_steps['preprocessor'].get_feature_names_out()
+    # исходные признаки, которые использовались при обучении
+    preprocessor = pipe_red.named_steps['preprocessor']
+    num_cols = preprocessor.transformers_[0][2]
+    small_cat_cols = preprocessor.transformers_[1][2]
+    large_cat_cols = preprocessor.transformers_[2][2]
+    required_features = list(num_cols) + list(small_cat_cols) + list(large_cat_cols)
+
+    # проверка наличия исходных колонок
     missing_features = [f for f in required_features if f not in df.columns]
     if missing_features:
         st.error(f"Отсутствуют необходимые признаки: {missing_features}")
     else:
-        # 2) Прогноз
+        # прогноз
         y_pred_log = pipe_red.predict(df)
         y_pred = np.expm1(y_pred_log)  # возвращаем в исходное пространство
 
