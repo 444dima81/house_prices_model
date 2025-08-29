@@ -32,7 +32,7 @@
 ## ⚙️ Установка
 1. Клонировать репозиторий:  
 ```bash
-git clone https://github.com/yourusername/house-prices-model.git
+git clone https://github.com/444dima81/house_prices_model.git
 cd house-prices-model
 ```
 2. Создай виртулаьное окружение:
